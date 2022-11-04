@@ -1,19 +1,1 @@
 @import '../config-scss/rem-calc.scss';
-
-.toolbar {
-  height: rem-calc(80);
-  color: var(--white);
-  background-color: var(--primary);
-  box-shadow: 0 0 20px var(--shadow);
-
-  span {
-    margin-left: rem-calc(10);
-    font-size: rem-calc(40);
-    letter-spacing: rem-calc(1);
-  }
-}
-
-.container {
-  min-height: 100vh;
-  background-color: var(--secondary);
-}

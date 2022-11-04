@@ -1,0 +1,68 @@
+@import '../../../config-scss/rem-calc.scss';
+
+#banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--shadow), var(--shadow)),url(../../../assets/bg.jpg);
+  background-size: cover;
+
+  .content {
+    max-width: 900px;
+    text-align: center;
+
+    h2 {
+      font-size: rem-calc(80);
+      color: var(--white);
+    }
+
+    p {
+      font-size: rem-calc(16);
+      font-weight: 300;
+      margin-top: 50px;
+      color: var(--white);
+    }
+
+    .btn {
+      font-size: rem-calc(16);
+      text-decoration: none;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 5px 30px;
+      margin-top: 20px;
+      display: inline-block;
+      background-color: var(--green);
+      letter-spacing: 2px;
+      border-radius: 10px;
+      transition: 0.5s;
+    }
+
+    .btn:hover {
+      letter-spacing: 4px;
+    }
+  }
+}
+
+#table {
+  padding: 100px;
+  background-color: var(--primary);
+
+  table {
+    width: 100%;
+
+    .mat-column-id {
+      width: 32px;
+      padding-right: 24px;
+      text-align: center;
+      border-right: 1px solid currentColor;
+    }
+
+    .mat-column-name {
+      font-size: rem-calc(20);
+      padding-left: 16px;
+    }
+  }
+}
