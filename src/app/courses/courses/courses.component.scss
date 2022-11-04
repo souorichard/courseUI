@@ -34,7 +34,7 @@
       padding: 5px 30px;
       margin-top: 20px;
       display: inline-block;
-      background-color: var(--green);
+      background-color: var(--grey);
       letter-spacing: 2px;
       border-radius: 10px;
       transition: 0.5s;
@@ -46,23 +46,31 @@
   }
 }
 
-#table {
+#list {
   padding: 100px;
   background-color: var(--primary);
 
-  table {
+  .card {
     width: 100%;
+    padding: 20px;
+    background-color: var(--secondary);
+    box-shadow: -10px 0 30px var(--shadow);
 
-    .mat-column-id {
-      width: 32px;
-      padding-right: 24px;
-      text-align: center;
-      border-right: 1px solid currentColor;
-    }
+    table {
+      width: 100%;
+      background-color: var(--secondary);
 
-    .mat-column-name {
-      font-size: rem-calc(20);
-      padding-left: 16px;
+      .mat-column-id {
+        width: 32px;
+        padding-right: 24px;
+        text-align: center;
+        border-right: 1px solid currentColor;
+      }
+
+      .mat-column-name {
+        font-size: rem-calc(20);
+        padding-left: 16px;
+      }
     }
   }
 }
