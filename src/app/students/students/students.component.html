@@ -1,1 +1,35 @@
-<p>students works!</p>
+<section id="banner">
+  <div class="content">
+    <h2>See The Students</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut corrupti, porro quasi, atque accusantium velit nihil illo eos ducimus eaque, in fuga. Nostrum illum expedita quisquam est ad quidem veritatis</p>
+    <button mat-raised-button (click)="scroll()"class="btn">See the Students</button>
+  </div>
+</section>
+
+<section id="list">
+  <mat-card class="card">
+    <h2>List of Students</h2>
+    <table mat-table [dataSource]="students" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let students"> {{ students.id }} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let students"> {{ students.namestudent }} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let students"> {{ students.age }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</section>

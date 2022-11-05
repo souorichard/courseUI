@@ -1,0 +1,18 @@
+@import '../../../config-scss/rem-calc.scss';
+
+#banner {
+  background: linear-gradient(var(--shadow), var(--shadow)),url(../../../assets/bg2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#list {
+  .card {
+    table {
+      .mat-column-age {
+        font-size: rem-calc(20);
+        padding-left: 16px;
+      }
+    }
+  }
+}

@@ -1,3 +1,11 @@
-<app-toolbar></app-toolbar>
+<mat-toolbar>
+  <a href="#" class="logo">Etec <span>.</span></a>
+  <ul class="navigation">
+    <li><a (click)="scrollTop()" routerLink="/">Home</a></li>
+    <li><a (click)="scrollTop()" routerLink="/students">Students</a></li>
+    <li><a (click)="scrollTop()" routerLink="/contact">Contact</a></li>
+  </ul>
+</mat-toolbar>
+
 
 <router-outlet></router-outlet>
