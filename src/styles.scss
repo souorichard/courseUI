@@ -60,10 +60,12 @@ body {
   }
 }
 
-#list {
+#list, #contact {
   padding: 100px;
   background-color: var(--primary);
+}
 
+#list {
   .card {
     width: 100%;
     padding: 20px;

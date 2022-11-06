@@ -1,0 +1,44 @@
+@import '../../../config-scss/rem-calc.scss';
+
+#banner {
+  min-height: 50vh;
+  background: linear-gradient(var(--shadow), var(--shadow)),
+    url(../../../assets/bg.jpg);
+  background-size: cover;
+  background-position: center;
+
+  .content {
+    margin-top: 80px;
+  }
+}
+
+#contact {
+  .login-card {
+    width: 100%;
+    height: 800px;
+    padding: 40px;
+    display: flex;
+    background-color: var(--secondary);
+    box-shadow: 0 0 30px var(--shadowWhite);
+
+    .login-left {
+      width: 50%;
+      height: 100%;
+      background-color: aquamarine;
+    }
+
+    .login-right {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

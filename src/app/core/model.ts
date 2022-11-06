@@ -9,3 +9,8 @@ export interface Student {
   namestudent: string;
   age: number;
 }
+
+export interface Teacher {
+  id: number;
+  nameteacher: string;
+}
