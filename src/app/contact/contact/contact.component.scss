@@ -1,44 +1,107 @@
 @import '../../../config-scss/rem-calc.scss';
 
 #banner {
-  min-height: 50vh;
-  background: linear-gradient(var(--shadow), var(--shadow)),
-    url(../../../assets/bg.jpg);
+  min-height: 100vh;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--shadow), var(--shadow)), url(../../../assets/bg.jpg);
   background-size: cover;
   background-position: center;
 
-  .content {
-    margin-top: 80px;
+  .contact-card {
+    max-width: 1150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white);
+    box-shadow: 0 0 30px var(--shadowWhite);
+
+    .left {
+      height: 100%;
+      background: url(../../../assets/contactImg.png);
+      background-size: cover;
+    }
+
+    .right {
+      padding: 25px 40px;
+
+      h2 {
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 22px;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(to right, var(--blue), var(--blue2));
+        border-radius: 2px;
+      }
+
+      .field {
+        width: 100%;
+        padding: .5rem 1rem;
+        margin-bottom: 22px;
+        font-size: rem-calc(18);
+        background-color: rgba(230, 230, 230, .6);
+        border-radius: 10px;
+        border: 2px solid rgba(0, 0, 0, 0);
+        outline: none;
+        transition: .3s;
+      }
+
+      .field:hover {
+        background-color: rgba(0, 0, 0, .1);
+      }
+
+      .field:focus {
+        background-color: #fff;
+        border: 2px solid var(--blue);
+      }
+
+      textarea {
+        min-height: 150px;
+      }
+
+      .contact-btn {
+        width: 100%;
+        font-size: rem-calc(16);
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--white);
+        padding: 5px 20px;
+        display: inline-block;
+        background: linear-gradient(to right, var(--blue), var(--blue2));
+        letter-spacing: 2px;
+        border-radius: 10px;
+        transition: 0.5s;
+      }
+
+      .contact-btn:hover {
+        box-shadow: 0 0 15px var(--shadow);
+        letter-spacing: 4px;
+      }
+    }
   }
 }
 
-#contact {
-  .login-card {
-    width: 100%;
-    height: 800px;
-    padding: 40px;
-    display: flex;
-    background-color: var(--secondary);
-    box-shadow: 0 0 30px var(--shadowWhite);
-
-    .login-left {
-      width: 50%;
-      height: 100%;
-      background-color: aquamarine;
+@media screen and (max-width: 880px) {
+  #banner {
+    .contact-card {
+      grid-template-columns: 1fr;
     }
 
-    .login-right {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    .left {
+      display: none;
     }
   }
 }
