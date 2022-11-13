@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Student } from './../../core/model';
-
-const students: Student[] = [
-  { id: 1, namestudent: 'Richard', age: 16 },
-  { id: 2, namestudent: 'Yuri', age: 17 },
-  { id: 3, namestudent: 'Carol', age: 17 },
-  { id: 4, namestudent: 'João', age: 17 },
-];
+import { StudentsService } from './../services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -16,10 +11,13 @@ const students: Student[] = [
 })
 export class StudentsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'age'];
-  students = students;
+  students: Observable<Student[]>;
 
-  constructor() { }
+  displayedColumns: string[] = ['id', 'name', 'age'];
+
+  constructor( private studentsService: StudentsService ) {
+    this.students = this.studentsService.list();
+  }
 
   ngOnInit(): void {
   }

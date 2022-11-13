@@ -1,33 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Course } from 'src/app/core/model';
 
-const courses: Course[] = [
-  { id: 1, namecourse: 'Development of Systems', period: 'Full' },
-  { id: 2, namecourse: 'Chemistry', period: 'Full' },
-  { id: 3, namecourse: 'Marketing', period: 'Morning' },
-  { id: 4, namecourse: 'Buildings', period: 'Night' },
-];
+import { CoursesService } from './../services/courses.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
 
+  courses: Observable<Course[]>;
+
   displayedColumns: string[] = ['id', 'name', 'period'];
-  courses = courses;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor( private coursesService: CoursesService ) {
+    this.courses = this.coursesService.list();
   }
+
+  ngOnInit(): void {}
 
   scroll() {
     window.scroll({
       top: 500,
-      behavior: 'smooth'
-    })
+      behavior: 'smooth',
+    });
   }
-
 }
