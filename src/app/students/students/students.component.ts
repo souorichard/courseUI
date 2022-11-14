@@ -11,12 +11,12 @@ import { StudentsService } from './../services/students.service';
 })
 export class StudentsComponent implements OnInit {
 
-  students: Observable<Student[]>;
+  students$: Observable<Student[]>;
 
   displayedColumns: string[] = ['id', 'name', 'age'];
 
   constructor( private studentsService: StudentsService ) {
-    this.students = this.studentsService.list();
+    this.students$ = this.studentsService.list();
   }
 
   ngOnInit(): void {

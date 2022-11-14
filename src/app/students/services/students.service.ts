@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { delay, first, tap } from 'rxjs';
 
 import { Student } from './../../core/model';
 
@@ -13,7 +14,11 @@ export class StudentsService {
   constructor( private httpClient: HttpClient ) { }
 
   list() {
-    return this.httpClient.get<Student[]>(this.API)
+    return this.httpClient.get<Student[]>(this.API).pipe(
+      first(),
+      delay(2000),
+      tap(students => console.log(students))
+    )
   }
 
 }
