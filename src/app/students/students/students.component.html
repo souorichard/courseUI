@@ -8,9 +8,11 @@
 
 <section id="list">
   <mat-card class="card">
-    <h2>List of Students</h2>
+    <mat-toolbar class="toolbar">
+      <h2>List of Students</h2>
+    </mat-toolbar>
     <div *ngIf="students$ | async as students; else loading">
-      <table mat-table [dataSource]="students" class="mat-elevation-z8">
+      <table mat-table [dataSource]="students">
         <!-- Position Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
