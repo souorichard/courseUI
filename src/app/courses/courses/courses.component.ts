@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of } from 'rxjs';
 import { Course } from 'src/app/core/model';
 
+import { ErrorDialogComponent } from './../../shared/error-dialog/error-dialog.component';
 import { CoursesService } from './../services/courses.service';
 
 @Component({
@@ -15,8 +17,16 @@ export class CoursesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'period'];
 
-  constructor( private coursesService: CoursesService ) {
-    this.courses$ = this.coursesService.list();
+  constructor(
+    private coursesService: CoursesService,
+    public dialog: MatDialog
+  ) {
+    this.courses$ = this.coursesService.list().pipe(
+      catchError(error => {
+        this.onError('Error loading courses.');
+        return of([])
+      })
+    );
   }
 
   ngOnInit(): void {}
@@ -25,6 +35,12 @@ export class CoursesComponent implements OnInit {
     window.scroll({
       top: 500,
       behavior: 'smooth',
+    });
+  }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
     });
   }
 }

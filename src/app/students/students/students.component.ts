@@ -1,5 +1,7 @@
+import { ErrorDialogComponent } from './../../shared/error-dialog/error-dialog.component';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable, catchError, of } from 'rxjs';
 
 import { Student } from './../../core/model';
 import { StudentsService } from './../services/students.service';
@@ -15,8 +17,16 @@ export class StudentsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'age'];
 
-  constructor( private studentsService: StudentsService ) {
-    this.students$ = this.studentsService.list();
+  constructor(
+    private studentsService: StudentsService,
+    public dialog: MatDialog
+  ) {
+    this.students$ = this.studentsService.list().pipe(
+      catchError(error => {
+        this.onError('Error loading students.');
+        return of([]);
+      })
+    );
   }
 
   ngOnInit(): void {
@@ -29,4 +39,9 @@ export class StudentsComponent implements OnInit {
     })
   }
 
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
+  }
 }
